@@ -26,5 +26,6 @@
 
 ## Сдача
 - [x] `homework/IMPROVEMENTS.md`
-- [ ] `homework/SUBMISSION.md` — вписать ссылку на репозиторий после публикации
-- [ ] Опубликовать репозиторий и открыть PR в `MaratNotes/rag-tutorial`
+- [x] `homework/SUBMISSION.md` — ссылка на репозиторий вписана
+- [x] Опубликовать репозиторий: https://github.com/ak1232320/corp_dannie_rag
+- [ ] Открыть PR в `MaratNotes/rag-tutorial` (правка их `homework/SUBMISSION.md` со ссылкой)
