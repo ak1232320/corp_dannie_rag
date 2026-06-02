@@ -21,23 +21,30 @@ datasets.json ──ingest──▶ documents.jsonl ──chunk──▶ chunks.
 
 Всё ставится в **локальное окружение проекта** (`.venv`), глобально ничего не нужно.
 
+Готовый корпус `data/raw/datasets.json` (1200 записей) **уже в репозитории**, поэтому
+для запуска скачивать что-либо с Kaggle не нужно:
+
 ```powershell
 # 1. Зависимости в локальный .venv
 uv sync
 
-# 2. Данные: скачать с Kaggle и распаковать в "data/clinical trial eligibility dataset/"
-#    https://www.kaggle.com/datasets/harrachimustapha/clinical-trial-eligibility-criteria-dataset
-#    (нужен файл trials_clean.csv)
-
-# 3. Подготовить корпус -> data/raw/datasets.json (1200 записей)
-uv run python scripts/prepare_datasets.py
-
-# 4. Собрать индекс (TF-IDF + эмбеддинги); первый запуск скачает модель (~470 МБ)
+# 2. Собрать индекс (TF-IDF + эмбеддинги); первый запуск скачает модель (~470 МБ)
 uv run python scripts/build_index.py
 
-# 5. Запустить UI -> http://localhost:8501
+# 3. Запустить UI -> http://localhost:8501
 uv run streamlit run app/main.py
 ```
+
+<details>
+<summary>Опционально: пересобрать корпус из исходника Kaggle</summary>
+
+```powershell
+# скачать датасет и распаковать в "data/clinical trial eligibility dataset/"
+# https://www.kaggle.com/datasets/harrachimustapha/clinical-trial-eligibility-criteria-dataset
+# (нужен файл trials_clean.csv), затем:
+uv run python scripts/prepare_datasets.py   # -> data/raw/datasets.json (1200 записей)
+```
+</details>
 
 Опционально — **LLM-генерация** (иначе работает экстрактивный фолбэк):
 
