@@ -1,0 +1,40 @@
+# Окружение
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Сырые данные с Kaggle (datasets.json коммитим, исходники — нет)
+data/raw/*.csv
+data/raw/*.zip
+data/raw/*.tsv
+data/raw/*.parquet
+# Большой исходный датасет Clinical Trials (скачивается с Kaggle, ~150+ МБ)
+data/clinical trial eligibility dataset/
+
+# Артефакты пайплайна (генерируются скриптами)
+data/index/
+data/processed/*.jsonl
+
+# Кэш моделей HuggingFace / torch
+.cache/
+
+# Секреты
+.env
+.env.*
+!.env.example
+
+# IDE и ОС
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

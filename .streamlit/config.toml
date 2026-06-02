@@ -1,0 +1,12 @@
+# Streamlit отключаем авто-watcher: он обходит ВСЕ загруженные модули и трогает
+# их __path__. У transformers (через sentence-transformers) это лениво импортирует
+# десятки image-процессоров, многие из которых требуют torchvision (нам не нужен) —
+# отсюда поток "ModuleNotFoundError: No module named 'torchvision'".
+# Отключение watcher'а убирает шум и ускоряет старт. Минус — нет авто-reload при
+# правке кода (для демо не нужен; перезапуск вручную через Ctrl-C).
+[server]
+fileWatcherType = "none"
+headless = true
+
+[browser]
+gatherUsageStats = false
